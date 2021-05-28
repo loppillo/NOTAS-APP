@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bcrypt);
     }
-
+    
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .sessionManagement()

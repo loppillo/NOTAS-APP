@@ -15,7 +15,8 @@ import io.swagger.annotations.ApiModel;
 @Table(name="usuario")
 public class Usuario {
 		
-
+		public Usuario() {}
+	
 	
 		public Usuario(Integer idUsuario, String password, List<Rol> rols) {
 			this.idUsuario = idUsuario;
@@ -28,19 +29,19 @@ public class Usuario {
 		@Id
 	    private Integer idUsuario;
 
-	 	@Size(min=10,max=20,message="El Nombre De Usuario debe ser igual o mayor de 10 y menor o igual de 20")	
-	    @Column(name = "nombre", length = 20)
+	 	@Size(min=10,max=20,message="El Nombre De Usuario debe ser igual o mayor de 10 y menor o igual de 250")	
+	    @Column(name = "nombre", length = 255)
 	    private String userName;
 
-	 	@Size(min=10,max=25,message="El password debe ser igual o mayor de 10 y menor o igual de 25")
-	    @Column(name = "clave", length = 25)
+	 	@Size(min=10,max=25,message="El password debe ser igual o mayor de 10 y menor o igual de 250")
+	    @Column(name = "clave", length = 255)
 	    private String password;
 
 	 	
 	    @Column(name = "estado")
 	    private boolean estado;
 
-	    @ManyToMany
+	    @ManyToMany(fetch = FetchType.EAGER)
 	    @JoinTable(
 	            name = "usuario_rol",
 	            joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "idUsuario"),
